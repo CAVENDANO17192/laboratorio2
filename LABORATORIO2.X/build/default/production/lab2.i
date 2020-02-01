@@ -7,9 +7,21 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "lab2.c" 2
+# 13 "lab2.c"
+#pragma config FOSC = INTRC_NOCLKOUT
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = OFF
+#pragma config LVP = OFF
 
 
-
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
 
 
 
@@ -2499,9 +2511,64 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 9 "lab2.c" 2
+# 31 "lab2.c" 2
 
 
-void main(void) {
+
+
+
+void analogico(void);
+void desplegar(void);
+char x;
+
+
+
+void main(void)
+{
+    OSCCONbits.IRCF = 0b110;
+
+    ANSEL = 0b00000000;
+    ANSELH = 0b00100000;
+    TRISA = 0b00000000;
+    TRISB = 0b00100011;
+    TRISC = 0b00000000;
+    TRISD = 0b00000000;
+    TRISE = 0;
+    PORTA = 0;
+    PORTB = 0b00100011;
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
+    ADCON0bits.ADCS0 = 1;
+    ADCON0bits.ADCS1 = 0;
+    ADCON0bits.CHS0 = 1;
+    ADCON0bits.CHS1 = 0;
+    ADCON0bits.CHS2 = 1;
+    ADCON0bits.CHS3 = 1;
+    ADCON1bits.ADFM = 0;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+    analogico();
     return;
 }
+
+    void analogico(void){
+        while(1){
+        _delay((unsigned long)((1)*(4000000/4000.0)));
+        ADCON0bits.ADON = 1;
+        if(ADCON0bits.GO_DONE == 0){
+            ADCON0bits.GO_DONE = 1;
+
+        }
+
+        desplegar();
+        }
+
+    }
+
+    void desplegar(void){
+
+        PORTA = ADRESH;
+        return;
+
+    }
