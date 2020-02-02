@@ -39,6 +39,7 @@ void analogico(void);
 void desplegar(void);
 void display(void);
 void NIBBLES(void);
+void TOGGLE(void);
 
 
 
@@ -52,14 +53,11 @@ unsigned char y;
 unsigned char ADC;
 
 void __interrupt() ISR(void){
-    
+       // desplegar();
+    TOGGLE();
         TMR0IF=0;
         TMR0= 2;
-      
         PORTA = ADC;
-        desplegar();
-    
-     
         return;
 }
     
@@ -68,7 +66,7 @@ void main(void)
 {
    // oscilador interno
     
-    OSCCONbits.IRCF = 0b110; //4Mhz
+    OSCCONbits.IRCF = 0b101; //2Mhz
     OSCCONbits.OSTS= 0;
     OSCCONbits.HTS = 0;
     OSCCONbits.LTS = 0;
@@ -116,7 +114,7 @@ void main(void)
     INTCONbits.T0IE= 1;
     //INTCONbits.INTE= 0; //prender despues
     //INTCONbits.RBIE= 0; //prender despues
-    INTCONbits.T0IF= 0;
+    INTCONbits.T0IF= 1;
     //INTCONbits.INTF= 0;
     //INTCONbits.RBIF= 0;
     
@@ -142,7 +140,7 @@ void main(void)
         NIBBLES();
         //PORTA = ADC;
         
-       // desplegar();
+       desplegar();
        
         }
         
@@ -156,7 +154,7 @@ void main(void)
             PORTC = DISPLAY1[x];
             seg1 = 1;
             seg2=0;
-            BANDERA = 0;
+            //BANDERA = 0;
             return;
         }
         if(BANDERA == 0){
@@ -164,7 +162,7 @@ void main(void)
             PORTC = DISPLAY2[y];
             seg2 = 1;
             seg1 = 0;
-            BANDERA = 1;
+            //BANDERA = 1;
             return;
         }
         
@@ -179,4 +177,12 @@ void main(void)
         
     }
    
+    void TOGGLE (void){
+        if(BANDERA==1){
+            BANDERA =0;
+        }
+        else{
+            BANDERA = 1;
+        }
+    }
    

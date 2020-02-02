@@ -2523,6 +2523,7 @@ void analogico(void);
 void desplegar(void);
 void display(void);
 void NIBBLES(void);
+void TOGGLE(void);
 
 
 
@@ -2537,13 +2538,10 @@ unsigned char ADC;
 
 void __attribute__((picinterrupt(("")))) ISR(void){
 
+    TOGGLE();
         TMR0IF=0;
         TMR0= 2;
-
         PORTA = ADC;
-        desplegar();
-
-
         return;
 }
 
@@ -2552,7 +2550,7 @@ void main(void)
 {
 
 
-    OSCCONbits.IRCF = 0b110;
+    OSCCONbits.IRCF = 0b101;
     OSCCONbits.OSTS= 0;
     OSCCONbits.HTS = 0;
     OSCCONbits.LTS = 0;
@@ -2600,7 +2598,7 @@ void main(void)
     INTCONbits.T0IE= 1;
 
 
-    INTCONbits.T0IF= 0;
+    INTCONbits.T0IF= 1;
 
 
 
@@ -2626,7 +2624,7 @@ void main(void)
         NIBBLES();
 
 
-
+       desplegar();
 
         }
 
@@ -2640,7 +2638,7 @@ void main(void)
             PORTC = DISPLAY1[x];
             RD0 = 1;
             RD1=0;
-            BANDERA = 0;
+
             return;
         }
         if(BANDERA == 0){
@@ -2648,7 +2646,7 @@ void main(void)
             PORTC = DISPLAY2[y];
             RD1 = 1;
             RD0 = 0;
-            BANDERA = 1;
+
             return;
         }
 
@@ -2661,4 +2659,13 @@ void main(void)
 
         return;
 
+    }
+
+    void TOGGLE (void){
+        if(BANDERA==1){
+            BANDERA =0;
+        }
+        else{
+            BANDERA = 1;
+        }
     }
