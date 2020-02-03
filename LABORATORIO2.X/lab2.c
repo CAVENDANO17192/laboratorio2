@@ -30,6 +30,7 @@
 
 #include <xc.h>
 
+#define  ALARMA  RD2
 #define  seg1    RD0
 #define  seg2    RD1
 #define  SUMA    RB1
@@ -48,7 +49,7 @@ void TOGGLE(void);
 unsigned char DISPLAY1[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71};
 unsigned char DISPLAY2[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71};
 char BANDERA;
-
+unsigned char  z;
 unsigned char i;
 unsigned char x;
 unsigned char y;
@@ -72,7 +73,7 @@ void main(void)
 {
    // oscilador interno
     
-    OSCCONbits.IRCF = 0b110; //4Mhz
+    OSCCONbits.IRCF = 0b111; //4Mhz
     OSCCONbits.OSTS= 0;
     OSCCONbits.HTS = 0;
     OSCCONbits.LTS = 0;
@@ -125,7 +126,11 @@ void main(void)
     //INTCONbits.RBIF= 0;
     
     
-    
+    i = 0;
+    z = 0;
+    ALARMA = 0;
+    seg1 = 0;
+    seg2 = 0;
     y=0;
     x=0;
     BANDERA = 0;
@@ -135,7 +140,14 @@ void main(void)
     
     void analogico(void){
         while(1){
-        
+            
+            
+            if (z>=i){
+                ALARMA = 1;
+            }
+            if (z<i){
+                ALARMA = 0;
+            }
         __delay_ms(1);
         if(ADCON0bits.GO_DONE == 0){
             ADCON0bits.GO_DONE = 1;   
@@ -171,6 +183,7 @@ void main(void)
        
     }
        // ADC = ADRESH;
+        z = ADRESH;
         x= ADRESH;
         y = ADRESH;
         NIBBLES();

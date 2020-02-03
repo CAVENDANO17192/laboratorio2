@@ -2512,7 +2512,7 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 31 "lab2.c" 2
-# 40 "lab2.c"
+# 41 "lab2.c"
 void analogico(void);
 void desplegar(void);
 void NIBBLES(void);
@@ -2524,7 +2524,7 @@ void TOGGLE(void);
 unsigned char DISPLAY1[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71};
 unsigned char DISPLAY2[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71};
 char BANDERA;
-
+unsigned char z;
 unsigned char i;
 unsigned char x;
 unsigned char y;
@@ -2548,7 +2548,7 @@ void main(void)
 {
 
 
-    OSCCONbits.IRCF = 0b110;
+    OSCCONbits.IRCF = 0b111;
     OSCCONbits.OSTS= 0;
     OSCCONbits.HTS = 0;
     OSCCONbits.LTS = 0;
@@ -2601,7 +2601,11 @@ void main(void)
 
 
 
-
+    i = 0;
+    z = 0;
+    RD2 = 0;
+    RD0 = 0;
+    RD1 = 0;
     y=0;
     x=0;
     BANDERA = 0;
@@ -2612,6 +2616,13 @@ void main(void)
     void analogico(void){
         while(1){
 
+
+            if (z>=i){
+                RD2 = 1;
+            }
+            if (z<i){
+                RD2 = 0;
+            }
         _delay((unsigned long)((1)*(4000000/4000.0)));
         if(ADCON0bits.GO_DONE == 0){
             ADCON0bits.GO_DONE = 1;
@@ -2647,6 +2658,7 @@ void main(void)
 
     }
 
+        z = ADRESH;
         x= ADRESH;
         y = ADRESH;
         NIBBLES();
