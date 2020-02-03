@@ -1,5 +1,5 @@
 /*
- * File:   CARRERAS.c
+ * File:   Laboratorio 2
  * Author: CHARLIE
  *
  * Created on 22 de enero de 2020, 14:41
@@ -32,12 +32,13 @@
 
 #define  seg1    RD0
 #define  seg2    RD1
+#define  SUMA    RB1
+#define  RESTA   RB0
 #define _XTAL_FREQ  4000000
 
 
 void analogico(void);
 void desplegar(void);
-void display(void);
 void NIBBLES(void);
 void TOGGLE(void);
 
@@ -48,16 +49,21 @@ unsigned char DISPLAY1[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x
 unsigned char DISPLAY2[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71};
 char BANDERA;
 
+unsigned char i;
 unsigned char x;
 unsigned char y;
 unsigned char ADC;
+unsigned char ANTIREBOTEA;
+unsigned char ANTIREBOTEB;
 
 void __interrupt() ISR(void){
-       // desplegar();
-    TOGGLE();
+       
+    if (TMR0IF==1){
+        TOGGLE();
         TMR0IF=0;
         TMR0= 2;
-        PORTA = ADC;
+        PORTA = i;
+    }
         return;
 }
     
@@ -66,7 +72,7 @@ void main(void)
 {
    // oscilador interno
     
-    OSCCONbits.IRCF = 0b101; //2Mhz
+    OSCCONbits.IRCF = 0b110; //4Mhz
     OSCCONbits.OSTS= 0;
     OSCCONbits.HTS = 0;
     OSCCONbits.LTS = 0;
@@ -120,7 +126,7 @@ void main(void)
     
     
     
-    
+    y=0;
     x=0;
     BANDERA = 0;
     analogico();
@@ -134,11 +140,41 @@ void main(void)
         if(ADCON0bits.GO_DONE == 0){
             ADCON0bits.GO_DONE = 1;   
         }
-        ADC = ADRESH;
+        
+        //  CONTADOR BINARIO 8 LEDS 
+       if (RESTA == 1){
+           ANTIREBOTEA = 1;
+       }
+        if(RESTA == 0 && ANTIREBOTEA ==1 ){
+            ANTIREBOTEA = 0;
+            
+            ADC++;
+            
+            i = ADC;
+            
+            
+            
+        }
+       
+       if(SUMA == 1 ){
+            ANTIREBOTEB= 1;
+        }
+       if(SUMA == 0 && ANTIREBOTEB ==1){
+            ANTIREBOTEB= 0;
+            ADC--;
+            
+            i = ADC;
+           
+            
+             
+        
+       
+    }
+       // ADC = ADRESH;
         x= ADRESH;
         y = ADRESH;
         NIBBLES();
-        //PORTA = ADC;
+        
         
        desplegar();
        
@@ -180,9 +216,11 @@ void main(void)
     void TOGGLE (void){
         if(BANDERA==1){
             BANDERA =0;
+            return;
         }
         else{
             BANDERA = 1;
+            return;
         }
     }
    

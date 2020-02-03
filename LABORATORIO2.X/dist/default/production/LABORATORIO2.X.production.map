@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.10\pic\dat\en_msgs.txt \
   -cs -h+dist/default/production\LABORATORIO2.X.production.sym \
   --cmf=dist/default/production\LABORATORIO2.X.production.cmf -z -Q16F887 \
-  -oC:\Users\50254\AppData\Local\Temp\sb50.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\50254\AppData\Local\Temp\sd20.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/LABORATORIO2.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -pfunctab=ENTRY -ACONFIG=02007h-02008h -pconfig=CONFIG -DCONFIG=2 \
   -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/02100h \
   -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
-  -DENTRY=2 -k C:\Users\50254\AppData\Local\Temp\sb50.o \
+  -DENTRY=2 -k C:\Users\50254\AppData\Local\Temp\sd20.o \
   dist/default/production\LABORATORIO2.X.production.o 
 
 Object code version is 3.11
@@ -28,41 +28,41 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\50254\AppData\Local\Temp\sb50.o
+C:\Users\50254\AppData\Local\Temp\sd20.o
                 end_init                              C        C        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2     400E       0
 dist/default/production\LABORATORIO2.X.production.o
-                cinit                                 F        F       16        8       0
+                cinit                                 F        F       19        8       0
                 intentry                              4        4        8        8       0
-                text5                               107      107        A        8       0
-                text4                                F4       F4       13        8       0
-                text3                                E1       E1       13        8       0
-                text2                                8D       8D       21        8       0
-                text1                                67       67       26        8       0
-                maintext                             25       25       42        8       0
-                cstackCOMMON                         70       70        5       70       1
-                inittext                             CE       CE       13        8       0
+                text5                               139      139        A        8       0
+                text4                                FC       FC       17        8       0
+                text3                               126      126       13        8       0
+                text2                                BB       BB       21        8       0
+                text1                                28       28       50        8       0
+                maintext                             78       78       43        8       0
+                cstackCOMMON                         77       77        5       70       1
+                inittext                            113      113       13        8       0
                 dataBANK0                            20       20       20       20       1
-                bssCOMMON                            75       75        4       70       1
-                idataBANK0                           AE       AE       20        8       0
+                bssCOMMON                            70       70        7       70       1
+                idataBANK0                           DC       DC       20        8       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 end_init                              C        C        3         0
-                cinit                                 F        F       16         0
+                cinit                                 F        F       19         0
                 intentry                              4        4        8         0
                 reset_vec                             0        0        3         0
-                text5                               107      107        A         0
-                text4                                F4       F4       13         0
-                text3                                E1       E1       13         0
-                text2                                8D       8D       21         0
-                text1                                67       67       26         0
-                maintext                             25       25       42         0
-                inittext                             CE       CE       13         0
-                idataBANK0                           AE       AE       20         0
+                text5                               139      139        A         0
+                text4                                FC       FC       17         0
+                text3                               126      126       13         0
+                text2                                BB       BB       21         0
+                text1                                28       28       50         0
+                maintext                             78       78       43         0
+                inittext                            113      113       13         0
+                idataBANK0                           DC       DC       20         0
 
         CLASS   STRCODE        
 
@@ -73,8 +73,8 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   ENTRY          
 
         CLASS   COMMON         
-                cstackCOMMON                         70       70        5         1
-                bssCOMMON                            75       75        4         1
+                cstackCOMMON                         77       77        5         1
+                bssCOMMON                            70       70        7         1
 
         CLASS   BANK0          
                 dataBANK0                            20       20       20         1
@@ -110,9 +110,9 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
-                intentry                       000004  00010D  000111         8       0  CODE        2
+                intentry                       000004  00013F  000143         8       0  CODE        2
                 dataBANK0                      000020  000020  000040        20       1  BANK0       1
-                cstackCOMMON                   000070  000009  000079        70       1  COMMON      1
+                bssCOMMON                      000070  00000C  00007C        70       1  COMMON      1
                 config                         002007  000002  002009      400E       0  CONFIG      2
 
 
@@ -124,13 +124,13 @@ UNUSED ADDRESS RANGES
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
         CODE             0003-0003              1           2
-                         0111-1FFF            800
-        COMMON           0079-007D              5           1
+                         0143-1FFF            800
+        COMMON           007C-007D              2           1
         CONST            0003-0003              1           2
-                         0111-1FFF            100
+                         0143-1FFF            100
         EEDATA           2100-21FF            100           2
         ENTRY            0003-0003              1           2
-                         0111-1FFF            100
+                         0143-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0040-006F             30           1
                          00A0-00EF             50
@@ -142,24 +142,26 @@ UNUSED ADDRESS RANGES
         SFR3             0180-018F             10           1
         STACK            0110-016F             60           1
         STRCODE          0003-0003              1           2
-                         0111-1FFF           1EEF
+                         0143-1FFF           1EBD
         STRING           0003-0003              1           2
-                         0111-1FFF            100
+                         0143-1FFF            100
 
                                   Symbol Table
 
-_ADC                      bssCOMMON    0075
+_ADC                      bssCOMMON    0072
 _ADCON0bits               (abs)        001F
 _ADCON1bits               (abs)        009F
 _ADRESH                   (abs)        001E
 _ANSEL                    (abs)        0188
 _ANSELH                   (abs)        0189
-_BANDERA                  bssCOMMON    0078
+_ANTIREBOTEA              bssCOMMON    0071
+_ANTIREBOTEB              bssCOMMON    0070
+_BANDERA                  bssCOMMON    0076
 _DISPLAY1                 dataBANK0    0030
 _DISPLAY2                 dataBANK0    0020
 _INTCONbits               (abs)        000B
-_ISR                      text4        00F4
-_NIBBLES                  text3        00E1
+_ISR                      text4        00FC
+_NIBBLES                  text3        0126
 _OPTION_REGbits           (abs)        0081
 _OSCCONbits               (abs)        008F
 _PORTA                    (abs)        0005
@@ -167,11 +169,13 @@ _PORTB                    (abs)        0006
 _PORTC                    (abs)        0007
 _PORTD                    (abs)        0008
 _PORTE                    (abs)        0009
+_RB0                      (abs)        0030
+_RB1                      (abs)        0031
 _RD0                      (abs)        0040
 _RD1                      (abs)        0041
 _TMR0                     (abs)        0001
 _TMR0IF                   (abs)        005A
-_TOGGLE                   text5        0107
+_TOGGLE                   text5        0139
 _TRISA                    (abs)        0085
 _TRISB                    (abs)        0086
 _TRISC                    (abs)        0087
@@ -195,7 +199,7 @@ __Hbank1                  bank1        0000
 __Hbank2                  bank2        0000
 __Hbank3                  bank3        0000
 __HbssCOMMON              bssCOMMON    0000
-__Hcinit                  cinit        0025
+__Hcinit                  cinit        0028
 __Hclrtext                clrtext      0000
 __Hcode                   code         0000
 __Hcommon                 common       0000
@@ -219,7 +223,7 @@ __Hsfr1                   sfr1         0000
 __Hsfr2                   sfr2         0000
 __Hsfr3                   sfr3         0000
 __Hspace_0                (abs)        2009
-__Hspace_1                (abs)        0079
+__Hspace_1                (abs)        007C
 __Hspace_2                (abs)        0000
 __Hspace_3                (abs)        0000
 __Hstack                  stack        0000
@@ -262,7 +266,7 @@ __Lstack                  stack        0000
 __Lstrings                strings      0000
 __Ltext                   text         0000
 __S0                      (abs)        2009
-__S1                      (abs)        0079
+__S1                      (abs)        007C
 __S2                      (abs)        0000
 __S3                      (abs)        0000
 ___int_sp                 stack        0000
@@ -270,40 +274,41 @@ ___latbits                (abs)        0002
 ___sp                     stack        0000
 ___stackhi                (abs)        0000
 ___stacklo                (abs)        0000
-__end_of_ISR              text4        0107
-__end_of_NIBBLES          text3        00F4
-__end_of_TOGGLE           text5        0111
-__end_of__initialization  cinit        0021
-__end_of_analogico        text1        008D
-__end_of_desplegar        text2        00AE
-__end_of_main             maintext     0067
+__end_of_ISR              text4        0113
+__end_of_NIBBLES          text3        0139
+__end_of_TOGGLE           text5        0143
+__end_of__initialization  cinit        0024
+__end_of_analogico        text1        0078
+__end_of_desplegar        text2        00DC
+__end_of_main             maintext     00BB
 __initialization          cinit        000F
-__pbssCOMMON              bssCOMMON    0075
-__pcstackCOMMON           cstackCOMMON 0070
+__pbssCOMMON              bssCOMMON    0070
+__pcstackCOMMON           cstackCOMMON 0077
 __pdataBANK0              dataBANK0    0020
-__pidataBANK0             idataBANK0   00AE
+__pidataBANK0             idataBANK0   00DC
 __pintentry               intentry     0004
-__pmaintext               maintext     0025
-__ptext1                  text1        0067
-__ptext2                  text2        008D
-__ptext3                  text3        00E1
-__ptext4                  text4        00F4
-__ptext5                  text5        0107
+__pmaintext               maintext     0078
+__ptext1                  text1        0028
+__ptext2                  text2        00BB
+__ptext3                  text3        0126
+__ptext4                  text4        00FC
+__ptext5                  text5        0139
 __size_of_ISR             (abs)        0000
 __size_of_NIBBLES         (abs)        0000
 __size_of_TOGGLE          (abs)        0000
 __size_of_analogico       (abs)        0000
 __size_of_desplegar       (abs)        0000
 __size_of_main            (abs)        0000
-_analogico                text1        0067
-_desplegar                text2        008D
-_main                     maintext     0025
-_x                        bssCOMMON    0077
-_y                        bssCOMMON    0076
+_analogico                text1        0028
+_desplegar                text2        00BB
+_i                        bssCOMMON    0075
+_main                     maintext     0078
+_x                        bssCOMMON    0074
+_y                        bssCOMMON    0073
 btemp                     (abs)        007E
-end_of_initialization     cinit        0021
-init_fetch0               inittext     00CE
-init_ram0                 inittext     00D2
+end_of_initialization     cinit        0024
+init_fetch0               inittext     0113
+init_ram0                 inittext     0117
 interrupt_function        intentry     0004
 intlevel0                 functab      0000
 intlevel1                 functab      0000
@@ -322,7 +327,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 65 in file "lab2.c"
+		line 71 in file "lab2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -351,7 +356,7 @@ Total ram usage:        0 bytes
 
  *************** function _analogico *****************
  Defined at:
-		line 130 in file "lab2.c"
+		line 136 in file "lab2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -382,7 +387,7 @@ Total ram usage:        1 bytes
 
  *************** function _desplegar *****************
  Defined at:
-		line 149 in file "lab2.c"
+		line 185 in file "lab2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -412,7 +417,7 @@ Total ram usage:        0 bytes
 
  *************** function _NIBBLES *****************
  Defined at:
-		line 172 in file "lab2.c"
+		line 208 in file "lab2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -442,7 +447,7 @@ Total ram usage:        2 bytes
 
  *************** function _ISR *****************
  Defined at:
-		line 55 in file "lab2.c"
+		line 59 in file "lab2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -472,7 +477,7 @@ Total ram usage:        2 bytes
 
  *************** function _TOGGLE *****************
  Defined at:
-		line 180 in file "lab2.c"
+		line 216 in file "lab2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -504,17 +509,17 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 lab2.c
-		_desplegar     		CODE           	008D	0000	34
-		_ISR           		CODE           	00F4	0000	20
-		_main          		CODE           	0025	0000	67
-		_TOGGLE        		CODE           	0107	0000	11
-		_analogico     		CODE           	0067	0000	39
-		_NIBBLES       		CODE           	00E1	0000	20
+		_desplegar     		CODE           	00BB	0000	34
+		_ISR           		CODE           	00FC	0000	24
+		_main          		CODE           	0078	0000	68
+		_TOGGLE        		CODE           	0139	0000	11
+		_analogico     		CODE           	0028	0000	81
+		_NIBBLES       		CODE           	0126	0000	20
 
-lab2.c estimated size: 191
+lab2.c estimated size: 238
 
 shared
-		__initialization		CODE           	000F	0000	19
+		__initialization		CODE           	000F	0000	22
 
-shared estimated size: 19
+shared estimated size: 22
 
