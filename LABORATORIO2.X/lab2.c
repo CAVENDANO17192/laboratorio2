@@ -214,7 +214,7 @@ void main(void)
             if (z>i){
                 ALARMA = 1;
             }
-            if (z<i){
+            if (z<=i){
                 ALARMA = 0;
             }
         __delay_ms(1);

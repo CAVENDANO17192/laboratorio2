@@ -25,7 +25,7 @@ intentry CODE 0 4 4 8 2
 idataBANK0 CODE 0 134 134 20 2
 dataBANK0 BANK0 1 20 20 20 1
 bssCOMMON COMMON 1 70 70 8 1
-$C:\Users\50254\AppData\Local\Temp\sctc.o
+$C:\Users\50254\AppData\Local\Temp\sgfc.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 0 2007 2007 2 2
@@ -74,29 +74,29 @@ STRING 184-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\LABORATORIO2.X.production.o
-F cinit CODE >545:C:\Users\50254\AppData\Local\Temp\sctc.s
-F cinit CODE >548:C:\Users\50254\AppData\Local\Temp\sctc.s
-F cinit CODE >622:C:\Users\50254\AppData\Local\Temp\sctc.s
-10 cinit CODE >623:C:\Users\50254\AppData\Local\Temp\sctc.s
-11 cinit CODE >624:C:\Users\50254\AppData\Local\Temp\sctc.s
-12 cinit CODE >625:C:\Users\50254\AppData\Local\Temp\sctc.s
-13 cinit CODE >626:C:\Users\50254\AppData\Local\Temp\sctc.s
-14 cinit CODE >627:C:\Users\50254\AppData\Local\Temp\sctc.s
-15 cinit CODE >628:C:\Users\50254\AppData\Local\Temp\sctc.s
-16 cinit CODE >629:C:\Users\50254\AppData\Local\Temp\sctc.s
-17 cinit CODE >630:C:\Users\50254\AppData\Local\Temp\sctc.s
-18 cinit CODE >631:C:\Users\50254\AppData\Local\Temp\sctc.s
-1D cinit CODE >635:C:\Users\50254\AppData\Local\Temp\sctc.s
-1E cinit CODE >636:C:\Users\50254\AppData\Local\Temp\sctc.s
-1F cinit CODE >637:C:\Users\50254\AppData\Local\Temp\sctc.s
-20 cinit CODE >638:C:\Users\50254\AppData\Local\Temp\sctc.s
-21 cinit CODE >639:C:\Users\50254\AppData\Local\Temp\sctc.s
-22 cinit CODE >640:C:\Users\50254\AppData\Local\Temp\sctc.s
-23 cinit CODE >641:C:\Users\50254\AppData\Local\Temp\sctc.s
-24 cinit CODE >642:C:\Users\50254\AppData\Local\Temp\sctc.s
-25 cinit CODE >648:C:\Users\50254\AppData\Local\Temp\sctc.s
-25 cinit CODE >650:C:\Users\50254\AppData\Local\Temp\sctc.s
-26 cinit CODE >651:C:\Users\50254\AppData\Local\Temp\sctc.s
+F cinit CODE >545:C:\Users\50254\AppData\Local\Temp\sgfc.s
+F cinit CODE >548:C:\Users\50254\AppData\Local\Temp\sgfc.s
+F cinit CODE >622:C:\Users\50254\AppData\Local\Temp\sgfc.s
+10 cinit CODE >623:C:\Users\50254\AppData\Local\Temp\sgfc.s
+11 cinit CODE >624:C:\Users\50254\AppData\Local\Temp\sgfc.s
+12 cinit CODE >625:C:\Users\50254\AppData\Local\Temp\sgfc.s
+13 cinit CODE >626:C:\Users\50254\AppData\Local\Temp\sgfc.s
+14 cinit CODE >627:C:\Users\50254\AppData\Local\Temp\sgfc.s
+15 cinit CODE >628:C:\Users\50254\AppData\Local\Temp\sgfc.s
+16 cinit CODE >629:C:\Users\50254\AppData\Local\Temp\sgfc.s
+17 cinit CODE >630:C:\Users\50254\AppData\Local\Temp\sgfc.s
+18 cinit CODE >631:C:\Users\50254\AppData\Local\Temp\sgfc.s
+1D cinit CODE >635:C:\Users\50254\AppData\Local\Temp\sgfc.s
+1E cinit CODE >636:C:\Users\50254\AppData\Local\Temp\sgfc.s
+1F cinit CODE >637:C:\Users\50254\AppData\Local\Temp\sgfc.s
+20 cinit CODE >638:C:\Users\50254\AppData\Local\Temp\sgfc.s
+21 cinit CODE >639:C:\Users\50254\AppData\Local\Temp\sgfc.s
+22 cinit CODE >640:C:\Users\50254\AppData\Local\Temp\sgfc.s
+23 cinit CODE >641:C:\Users\50254\AppData\Local\Temp\sgfc.s
+24 cinit CODE >642:C:\Users\50254\AppData\Local\Temp\sgfc.s
+25 cinit CODE >648:C:\Users\50254\AppData\Local\Temp\sgfc.s
+25 cinit CODE >650:C:\Users\50254\AppData\Local\Temp\sgfc.s
+26 cinit CODE >651:C:\Users\50254\AppData\Local\Temp\sgfc.s
 4 intentry CODE >61:C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
 17A text5 CODE >274:C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
 17A text5 CODE >275:C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
@@ -223,23 +223,23 @@ DB maintext CODE >204:C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2
 DC maintext CODE >205:C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
 DD maintext CODE >206:C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
 E2 maintext CODE >208:C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
-154 inittext CODE >596:C:\Users\50254\AppData\Local\Temp\sctc.s
-154 inittext CODE >597:C:\Users\50254\AppData\Local\Temp\sctc.s
-155 inittext CODE >598:C:\Users\50254\AppData\Local\Temp\sctc.s
-156 inittext CODE >599:C:\Users\50254\AppData\Local\Temp\sctc.s
-157 inittext CODE >600:C:\Users\50254\AppData\Local\Temp\sctc.s
-158 inittext CODE >607:C:\Users\50254\AppData\Local\Temp\sctc.s
-158 inittext CODE >608:C:\Users\50254\AppData\Local\Temp\sctc.s
-15D inittext CODE >609:C:\Users\50254\AppData\Local\Temp\sctc.s
-15E inittext CODE >610:C:\Users\50254\AppData\Local\Temp\sctc.s
-15F inittext CODE >611:C:\Users\50254\AppData\Local\Temp\sctc.s
-160 inittext CODE >612:C:\Users\50254\AppData\Local\Temp\sctc.s
-161 inittext CODE >613:C:\Users\50254\AppData\Local\Temp\sctc.s
-162 inittext CODE >614:C:\Users\50254\AppData\Local\Temp\sctc.s
-163 inittext CODE >615:C:\Users\50254\AppData\Local\Temp\sctc.s
-164 inittext CODE >616:C:\Users\50254\AppData\Local\Temp\sctc.s
-165 inittext CODE >617:C:\Users\50254\AppData\Local\Temp\sctc.s
-166 inittext CODE >618:C:\Users\50254\AppData\Local\Temp\sctc.s
+154 inittext CODE >596:C:\Users\50254\AppData\Local\Temp\sgfc.s
+154 inittext CODE >597:C:\Users\50254\AppData\Local\Temp\sgfc.s
+155 inittext CODE >598:C:\Users\50254\AppData\Local\Temp\sgfc.s
+156 inittext CODE >599:C:\Users\50254\AppData\Local\Temp\sgfc.s
+157 inittext CODE >600:C:\Users\50254\AppData\Local\Temp\sgfc.s
+158 inittext CODE >607:C:\Users\50254\AppData\Local\Temp\sgfc.s
+158 inittext CODE >608:C:\Users\50254\AppData\Local\Temp\sgfc.s
+15D inittext CODE >609:C:\Users\50254\AppData\Local\Temp\sgfc.s
+15E inittext CODE >610:C:\Users\50254\AppData\Local\Temp\sgfc.s
+15F inittext CODE >611:C:\Users\50254\AppData\Local\Temp\sgfc.s
+160 inittext CODE >612:C:\Users\50254\AppData\Local\Temp\sgfc.s
+161 inittext CODE >613:C:\Users\50254\AppData\Local\Temp\sgfc.s
+162 inittext CODE >614:C:\Users\50254\AppData\Local\Temp\sgfc.s
+163 inittext CODE >615:C:\Users\50254\AppData\Local\Temp\sgfc.s
+164 inittext CODE >616:C:\Users\50254\AppData\Local\Temp\sgfc.s
+165 inittext CODE >617:C:\Users\50254\AppData\Local\Temp\sgfc.s
+166 inittext CODE >618:C:\Users\50254\AppData\Local\Temp\sgfc.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -269,10 +269,10 @@ __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 _desplegar 226 0 CODE 0 text2 dist/default/production\LABORATORIO2.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\50254\AppData\Local\Temp\sctc.o
+___sp 0 0 STACK 2 stack C:\Users\50254\AppData\Local\Temp\sgfc.o
 _main 120 0 CODE 0 maintext dist/default/production\LABORATORIO2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
-start 18 0 CODE 0 init C:\Users\50254\AppData\Local\Temp\sctc.o
+start 18 0 CODE 0 init C:\Users\50254\AppData\Local\Temp\sgfc.o
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
@@ -280,12 +280,12 @@ _OPTION_REGbits 81 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
 __end_of_TOGGLE 308 0 CODE 0 text5 dist/default/production\LABORATORIO2.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sctc.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sctc.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sctc.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sctc.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sctc.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sctc.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sgfc.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sgfc.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sgfc.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sgfc.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sgfc.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\50254\AppData\Local\Temp\sgfc.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
@@ -294,15 +294,15 @@ __Hclrtext 0 0 ABS 0 clrtext -
 _ADRESH 1E 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
 _ANSELH 189 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\50254\AppData\Local\Temp\sctc.o
-___stacklo 0 0 ABS 0 - C:\Users\50254\AppData\Local\Temp\sctc.o
+___stackhi 0 0 ABS 0 - C:\Users\50254\AppData\Local\Temp\sgfc.o
+___stacklo 0 0 ABS 0 - C:\Users\50254\AppData\Local\Temp\sgfc.o
 _NIBBLES 2CE 0 CODE 0 text3 dist/default/production\LABORATORIO2.X.production.o
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
 __CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\LABORATORIO2.X.production.o
 _TMR0IF 5A 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
 _TOGGLE 2F4 0 CODE 0 text5 dist/default/production\LABORATORIO2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\50254\AppData\Local\Temp\sctc.o
+___int_sp 0 0 STACK 2 stack C:\Users\50254\AppData\Local\Temp\sgfc.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -361,7 +361,7 @@ __CFG_FOSC$INTRC_NOCLKOUT 0 0 ABS 0 - dist/default/production\LABORATORIO2.X.pro
 __end_of_ISR 120 0 CODE 0 text4 dist/default/production\LABORATORIO2.X.production.o
 _analogico 1CA 0 CODE 0 text1 dist/default/production\LABORATORIO2.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\50254\AppData\Local\Temp\sctc.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\50254\AppData\Local\Temp\sgfc.o
 __pdataBANK0 20 0 BANK0 1 dataBANK0 dist/default/production\LABORATORIO2.X.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\LABORATORIO2.X.production.o
 _BANDERA 77 0 COMMON 1 bssCOMMON dist/default/production\LABORATORIO2.X.production.o

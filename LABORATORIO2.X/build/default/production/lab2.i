@@ -2688,7 +2688,7 @@ void main(void)
             if (z>i){
                 RD2 = 1;
             }
-            if (z<i){
+            if (z<=i){
                 RD2 = 0;
             }
         _delay((unsigned long)((1)*(4000000/4000.0)));
