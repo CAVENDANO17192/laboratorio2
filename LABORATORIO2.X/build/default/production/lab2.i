@@ -2512,7 +2512,7 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 31 "lab2.c" 2
-# 41 "lab2.c"
+# 42 "lab2.c"
 void analogico(void);
 void desplegar(void);
 void NIBBLES(void);
@@ -2534,13 +2534,60 @@ unsigned char ANTIREBOTEB;
 
 void __attribute__((picinterrupt(("")))) ISR(void){
 
-    if (TMR0IF==1){
+    if (TMR0IF == 1 ){
         TOGGLE();
         TMR0IF=0;
         TMR0= 2;
         PORTA = i;
+        return;
+    }
+    if (INTCONbits.RBIF==1 ){
+        INTCONbits.RBIF = 0;
+        (INTCONbits.GIE = 0);
+
+
+        if (RB0 == 1){
+           ANTIREBOTEA = 1;
+           (INTCONbits.GIE = 0);
+
+
+
+       }
+        if(RB0 == 0 && ANTIREBOTEA ==1 ){
+            ANTIREBOTEA = 0;
+
+            ADC++;
+
+            i = ADC;
+            (INTCONbits.GIE = 1);
+            return;
+
+
+        }
+
+
+
+       if(RB1 == 1 ){
+            ANTIREBOTEB= 1;
+            (INTCONbits.GIE = 0);
+
+        }
+       if(RB1 == 0 && ANTIREBOTEB ==1){
+            ANTIREBOTEB= 0;
+            ADC--;
+
+            i = ADC;
+            (INTCONbits.GIE = 1);
+            return;
+
     }
         return;
+    }
+    if (PIR1bits.ADIF ==1){
+        PIR1bits.ADIF = 0;
+        return;
+    }
+
 }
 
 
@@ -2560,6 +2607,7 @@ void main(void)
     ANSELH = 0b00100000;
     TRISA = 0b00000000;
     TRISB = 0b00100011;
+
     TRISC = 0b00000000;
     TRISD = 0b00000000;
     TRISE = 0;
@@ -2596,10 +2644,23 @@ void main(void)
     INTCONbits.T0IE= 1;
 
 
-    INTCONbits.T0IF= 1;
+    INTCONbits.T0IF= 0;
 
 
 
+
+
+
+    PIE1bits.ADIE = 1;
+    PIR1bits.ADIF = 0;
+
+    INTCONbits.PEIE = 1;
+
+
+    INTCONbits.RBIF= 0;
+    INTCONbits.RBIE= 1;
+    IOCBbits.IOCB0 = 1;
+    IOCBbits.IOCB1 = 1;
 
     i = 0;
     z = 0;
@@ -2629,34 +2690,10 @@ void main(void)
         }
 
 
-       if (RB0 == 1){
-           ANTIREBOTEA = 1;
-       }
-        if(RB0 == 0 && ANTIREBOTEA ==1 ){
-            ANTIREBOTEA = 0;
-
-            ADC++;
-
-            i = ADC;
-
-
-
-        }
-
-       if(RB1 == 1 ){
-            ANTIREBOTEB= 1;
-        }
-       if(RB1 == 0 && ANTIREBOTEB ==1){
-            ANTIREBOTEB= 0;
-            ADC--;
-
-            i = ADC;
 
 
 
 
-
-    }
 
         z = ADRESH;
         x= ADRESH;

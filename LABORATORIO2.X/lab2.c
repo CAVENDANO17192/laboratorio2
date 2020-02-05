@@ -29,6 +29,7 @@
 // Use project enums instead of #define for ON and OFF.
 
 #include <xc.h>
+#include <pic16f887.h>
 
 #define  ALARMA  RD2
 #define  seg1    RD0
@@ -59,13 +60,60 @@ unsigned char ANTIREBOTEB;
 
 void __interrupt() ISR(void){
        
-    if (TMR0IF==1){
+    if (TMR0IF == 1 ){
         TOGGLE();
         TMR0IF=0;
         TMR0= 2;
         PORTA = i;
+        return;
+    }
+    if (INTCONbits.RBIF==1 ){
+        INTCONbits.RBIF = 0;
+        di();
+        
+        
+        if (RESTA == 1){
+           ANTIREBOTEA = 1;
+           di();
+           
+            
+    
+       }
+        if(RESTA == 0 && ANTIREBOTEA ==1 ){
+            ANTIREBOTEA = 0;
+            
+            ADC++;
+            
+            i = ADC;
+            ei();
+            return;
+                    
+            
+        }
+        
+        
+       
+       if(SUMA == 1 ){
+            ANTIREBOTEB= 1;
+            di();
+            
+        }
+       if(SUMA == 0 && ANTIREBOTEB ==1){
+            ANTIREBOTEB= 0;
+            ADC--;
+            
+            i = ADC;
+            ei();
+            return;
+              
     }
         return;
+    }
+    if (PIR1bits.ADIF ==1){
+        PIR1bits.ADIF = 0;
+        return;
+    }
+        
 }
     
 
@@ -85,6 +133,7 @@ void main(void)
     ANSELH = 0b00100000;
     TRISA = 0b00000000;
     TRISB = 0b00100011; 
+    
     TRISC = 0b00000000;
     TRISD = 0b00000000;
     TRISE = 0;
@@ -117,14 +166,27 @@ void main(void)
    
     // interrupciones intcon
     INTCONbits.GIE = 1;
-    //INTCONbits.PEIE= 1;
+   
     INTCONbits.T0IE= 1;
-    //INTCONbits.INTE= 0; //prender despues
-    //INTCONbits.RBIE= 0; //prender despues
-    INTCONbits.T0IF= 1;
-    //INTCONbits.INTF= 0;
-    //INTCONbits.RBIF= 0;
     
+    
+    INTCONbits.T0IF= 0;
+    
+    
+    
+    
+    
+    // interrupciones ADC
+    PIE1bits.ADIE = 1;
+    PIR1bits.ADIF = 0;
+  
+    INTCONbits.PEIE = 1;
+    
+    // interrupciones on change PORTB
+    INTCONbits.RBIF= 0;
+    INTCONbits.RBIE= 1;
+    IOCBbits.IOCB0 = 1;
+    IOCBbits.IOCB1 = 1;
     
     i = 0;
     z = 0;
@@ -154,35 +216,11 @@ void main(void)
         }
         
         //  CONTADOR BINARIO 8 LEDS 
-       if (RESTA == 1){
-           ANTIREBOTEA = 1;
-       }
-        if(RESTA == 0 && ANTIREBOTEA ==1 ){
-            ANTIREBOTEA = 0;
-            
-            ADC++;
-            
-            i = ADC;
-            
-            
-            
-        }
        
-       if(SUMA == 1 ){
-            ANTIREBOTEB= 1;
-        }
-       if(SUMA == 0 && ANTIREBOTEB ==1){
-            ANTIREBOTEB= 0;
-            ADC--;
-            
-            i = ADC;
-           
-            
-             
+      
         
-       
-    }
-       // ADC = ADRESH;
+        
+        
         z = ADRESH;
         x= ADRESH;
         y = ADRESH;
@@ -203,7 +241,7 @@ void main(void)
             PORTC = DISPLAY1[x];
             seg1 = 1;
             seg2=0;
-            //BANDERA = 0;
+           
             return;
         }
         if(BANDERA == 0){
@@ -211,7 +249,7 @@ void main(void)
             PORTC = DISPLAY2[y];
             seg2 = 1;
             seg1 = 0;
-            //BANDERA = 1;
+    
             return;
         }
         
