@@ -110,7 +110,14 @@ void __interrupt() ISR(void){
         return;
     }
     if (PIR1bits.ADIF ==1){
+        
         PIR1bits.ADIF = 0;
+        
+        z = ADRESH;
+        x=  ADRESH;
+        y = ADRESH;
+        
+        
         return;
     }
         
@@ -204,7 +211,7 @@ void main(void)
         while(1){
             
             
-            if (z>=i){
+            if (z>i){
                 ALARMA = 1;
             }
             if (z<i){
@@ -212,6 +219,8 @@ void main(void)
             }
         __delay_ms(1);
         if(ADCON0bits.GO_DONE == 0){
+            NIBBLES();
+            desplegar();
             ADCON0bits.GO_DONE = 1;   
         }
         
@@ -221,13 +230,11 @@ void main(void)
         
         
         
-        z = ADRESH;
-        x= ADRESH;
-        y = ADRESH;
-        NIBBLES();
         
         
-       desplegar();
+        
+        
+       
        
         }
         

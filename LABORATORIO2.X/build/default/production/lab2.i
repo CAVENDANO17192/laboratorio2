@@ -2584,7 +2584,14 @@ void __attribute__((picinterrupt(("")))) ISR(void){
         return;
     }
     if (PIR1bits.ADIF ==1){
+
         PIR1bits.ADIF = 0;
+
+        z = ADRESH;
+        x= ADRESH;
+        y = ADRESH;
+
+
         return;
     }
 
@@ -2678,7 +2685,7 @@ void main(void)
         while(1){
 
 
-            if (z>=i){
+            if (z>i){
                 RD2 = 1;
             }
             if (z<i){
@@ -2686,23 +2693,11 @@ void main(void)
             }
         _delay((unsigned long)((1)*(4000000/4000.0)));
         if(ADCON0bits.GO_DONE == 0){
+            NIBBLES();
+            desplegar();
             ADCON0bits.GO_DONE = 1;
         }
-
-
-
-
-
-
-
-        z = ADRESH;
-        x= ADRESH;
-        y = ADRESH;
-        NIBBLES();
-
-
-       desplegar();
-
+# 239 "lab2.c"
         }
 
     }
