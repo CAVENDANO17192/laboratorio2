@@ -11,18 +11,42 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"61 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
+"37 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"127
+"69
 [v _main main `(v  1 e 1 0 ]
-"210
+"76
 [v _analogico analogico `(v  1 e 1 0 ]
-"243
-[v _desplegar desplegar `(v  1 e 1 0 ]
-"266
-[v _NIBBLES NIBBLES `(v  1 e 1 0 ]
-"274
+"7 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\LIBRERIA.c
+[v _setup setup `(v  1 e 1 0 ]
+"87
 [v _TOGGLE TOGGLE `(v  1 e 1 0 ]
+"98
+[v _NIBBLES NIBBLES `(v  1 e 1 0 ]
+"105
+[v _desplegar desplegar `(v  1 e 1 0 ]
+"128
+[v _operacion operacion `(v  1 e 1 0 ]
+"37 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X/LIBRERIA.h
+[v _DISPLAY1 DISPLAY1 `[16]uc  1 e 16 0 ]
+"38
+[v _DISPLAY2 DISPLAY2 `[16]uc  1 e 16 0 ]
+"39
+[v _BANDERA BANDERA `uc  1 e 1 0 ]
+"40
+[v _z z `uc  1 e 1 0 ]
+"41
+[v _i i `uc  1 e 1 0 ]
+"42
+[v _x x `uc  1 e 1 0 ]
+"43
+[v _y y `uc  1 e 1 0 ]
+"44
+[v _ADC ADC `uc  1 e 1 0 ]
+"45
+[v _ANTIREBOTEA ANTIREBOTEA `uc  1 e 1 0 ]
+"46
+[v _ANTIREBOTEB ANTIREBOTEB `uc  1 e 1 0 ]
 "59 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
 "166
@@ -52,7 +76,7 @@
 ]
 [u S43 . 1 `S29 1 . 1 0 `S38 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES43  1 e 1 @11 ]
-[s S63 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S65 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -61,17 +85,17 @@
 `uc 1 ADIF 1 0 :1:6 
 ]
 "553
-[u S71 . 1 `S63 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES71  1 e 1 @12 ]
+[u S73 . 1 `S65 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES73  1 e 1 @12 ]
 "1238
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
-[s S120 . 1 `uc 1 ADON 1 0 :1:0 
+[s S100 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 `uc 1 ADCS 1 0 :2:6 
 ]
 "1276
-[s S125 . 1 `uc 1 . 1 0 :1:0 
+[s S105 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -80,15 +104,15 @@
 `uc 1 ADCS0 1 0 :1:6 
 `uc 1 ADCS1 1 0 :1:7 
 ]
-[s S134 . 1 `uc 1 . 1 0 :1:0 
+[s S114 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S137 . 1 `uc 1 . 1 0 :1:0 
+[s S117 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[u S140 . 1 `S120 1 . 1 0 `S125 1 . 1 0 `S134 1 . 1 0 `S137 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES140  1 e 1 @31 ]
-[s S181 . 1 `uc 1 PS 1 0 :3:0 
+[u S120 . 1 `S100 1 . 1 0 `S105 1 . 1 0 `S114 1 . 1 0 `S117 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES120  1 e 1 @31 ]
+[s S271 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -96,12 +120,12 @@
 `uc 1 nRBPU 1 0 :1:7 
 ]
 "1366
-[s S188 . 1 `uc 1 PS0 1 0 :1:0 
+[s S278 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 ]
-[u S192 . 1 `S181 1 . 1 0 `S188 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES192  1 e 1 @129 ]
+[u S282 . 1 `S271 1 . 1 0 `S278 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES282  1 e 1 @129 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1478
@@ -112,7 +136,7 @@
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S207 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S316 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -121,26 +145,26 @@
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1718
-[u S215 . 1 `S207 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES215  1 e 1 @140 ]
-[s S83 . 1 `uc 1 SCS 1 0 :1:0 
+[u S324 . 1 `S316 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES324  1 e 1 @140 ]
+[s S192 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S89 . 1 `uc 1 . 1 0 :4:0 
+[s S198 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S94 . 1 `S83 1 . 1 0 `S89 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES94  1 e 1 @143 ]
-[s S226 . 1 `uc 1 IOCB 1 0 :8:0 
+[u S203 . 1 `S192 1 . 1 0 `S198 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES203  1 e 1 @143 ]
+[s S346 . 1 `uc 1 IOCB 1 0 :8:0 
 ]
 "2436
-[s S228 . 1 `uc 1 IOCB0 1 0 :1:0 
+[s S348 . 1 `uc 1 IOCB0 1 0 :1:0 
 `uc 1 IOCB1 1 0 :1:1 
 `uc 1 IOCB2 1 0 :1:2 
 `uc 1 IOCB3 1 0 :1:3 
@@ -149,17 +173,17 @@
 `uc 1 IOCB6 1 0 :1:6 
 `uc 1 IOCB7 1 0 :1:7 
 ]
-[u S237 . 1 `S226 1 . 1 0 `S228 1 . 1 0 ]
-[v _IOCBbits IOCBbits `VES237  1 e 1 @150 ]
-[s S166 . 1 `uc 1 . 1 0 :4:0 
+[u S357 . 1 `S346 1 . 1 0 `S348 1 . 1 0 ]
+[v _IOCBbits IOCBbits `VES357  1 e 1 @150 ]
+[s S256 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2991
-[u S172 . 1 `S166 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES172  1 e 1 @159 ]
+[u S262 . 1 `S256 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES262  1 e 1 @159 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
@@ -176,53 +200,43 @@
 [v _RD2 RD2 `VEb  1 e 0 @66 ]
 "4361
 [v _TMR0IF TMR0IF `VEb  1 e 0 @90 ]
-"50 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
-[v _DISPLAY1 DISPLAY1 `[16]uc  1 e 16 0 ]
-"51
-[v _DISPLAY2 DISPLAY2 `[16]uc  1 e 16 0 ]
-"52
-[v _BANDERA BANDERA `uc  1 e 1 0 ]
-"53
-[v _z z `uc  1 e 1 0 ]
-"54
-[v _i i `uc  1 e 1 0 ]
-"55
-[v _x x `uc  1 e 1 0 ]
-"56
-[v _y y `uc  1 e 1 0 ]
-"57
-[v _ADC ADC `uc  1 e 1 0 ]
-"58
-[v _ANTIREBOTEA ANTIREBOTEA `uc  1 e 1 0 ]
-"59
-[v _ANTIREBOTEB ANTIREBOTEB `uc  1 e 1 0 ]
-"127
+"69 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
 [v _main main `(v  1 e 1 0 ]
 {
-"208
+"74
 } 0
-"210
+"7 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\LIBRERIA.c
+[v _setup setup `(v  1 e 1 0 ]
+{
+"86
+} 0
+"76 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
 [v _analogico analogico `(v  1 e 1 0 ]
 {
-"241
+"97
 } 0
-"243
+"105 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\LIBRERIA.c
 [v _desplegar desplegar `(v  1 e 1 0 ]
 {
-"264
+"126
 } 0
-"266
+"98
 [v _NIBBLES NIBBLES `(v  1 e 1 0 ]
 {
-"272
+"104
 } 0
-"61
+"37 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\lab2.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"124
+"66
 } 0
-"274
+"128 C:\Users\50254\Documents\GitHub\laboratorio_2\LABORATORIO2.X\LIBRERIA.c
+[v _operacion operacion `(v  1 e 1 0 ]
+{
+"161
+} 0
+"87
 [v _TOGGLE TOGGLE `(v  1 e 1 0 ]
 {
-"283
+"96
 } 0

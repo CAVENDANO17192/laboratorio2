@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=lab2.c
+SOURCEFILES_QUOTED_IF_SPACED=lab2.c LIBRERIA.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lab2.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/lab2.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lab2.p1 ${OBJECTDIR}/LIBRERIA.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/lab2.p1.d ${OBJECTDIR}/LIBRERIA.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/lab2.p1
+OBJECTFILES=${OBJECTDIR}/lab2.p1 ${OBJECTDIR}/LIBRERIA.p1
 
 # Source Files
-SOURCEFILES=lab2.c
+SOURCEFILES=lab2.c LIBRERIA.c
 
 
 
@@ -102,6 +102,14 @@ ${OBJECTDIR}/lab2.p1: lab2.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/lab2.d ${OBJECTDIR}/lab2.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/lab2.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/LIBRERIA.p1: LIBRERIA.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/LIBRERIA.p1.d 
+	@${RM} ${OBJECTDIR}/LIBRERIA.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LIBRERIA.p1 LIBRERIA.c 
+	@-${MV} ${OBJECTDIR}/LIBRERIA.d ${OBJECTDIR}/LIBRERIA.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/LIBRERIA.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/lab2.p1: lab2.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -110,6 +118,14 @@ ${OBJECTDIR}/lab2.p1: lab2.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/lab2.p1 lab2.c 
 	@-${MV} ${OBJECTDIR}/lab2.d ${OBJECTDIR}/lab2.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/lab2.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/LIBRERIA.p1: LIBRERIA.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/LIBRERIA.p1.d 
+	@${RM} ${OBJECTDIR}/LIBRERIA.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LIBRERIA.p1 LIBRERIA.c 
+	@-${MV} ${OBJECTDIR}/LIBRERIA.d ${OBJECTDIR}/LIBRERIA.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/LIBRERIA.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

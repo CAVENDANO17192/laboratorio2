@@ -1,4 +1,4 @@
-# 1 "lab2.c"
+# 1 "LIBRERIA.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,27 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "lab2.c" 2
-# 13 "lab2.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
+# 1 "LIBRERIA.c" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2511,8 +2491,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 31 "lab2.c" 2
-
+# 1 "LIBRERIA.c" 2
 
 # 1 "./LIBRERIA.h" 1
 # 37 "./LIBRERIA.h"
@@ -2533,69 +2512,164 @@ void NIBBLES(void);
 void TOGGLE(void);
 void setup (void);
 void operacion(void);
-# 33 "lab2.c" 2
+# 2 "LIBRERIA.c" 2
 
 
 
 
-void __attribute__((picinterrupt(("")))) ISR(void){
 
-    if (TMR0IF == 1 ){
-        TOGGLE();
-        TMR0IF=0;
-        TMR0= 2;
-        PORTA = i;
-        return;
-    }
-    if (INTCONbits.RBIF==1 ){
-        INTCONbits.RBIF = 0;
-        (INTCONbits.GIE = 0);
-
-        operacion();
-
-        return;
-    }
-    if (PIR1bits.ADIF ==1){
-
-        PIR1bits.ADIF = 0;
-
-        z = ADRESH;
-        x= ADRESH;
-        y = ADRESH;
+void setup(void){
 
 
-        return;
-    }
+    OSCCONbits.IRCF = 0b111;
+    OSCCONbits.OSTS= 0;
+    OSCCONbits.HTS = 0;
+    OSCCONbits.LTS = 0;
+    OSCCONbits.SCS = 1;
 
+
+
+    ANSEL = 0b00000000;
+    ANSELH = 0b00100000;
+    TRISA = 0b00000000;
+    TRISB = 0b00100011;
+
+    TRISC = 0b00000000;
+    TRISD = 0b00000000;
+    TRISE = 0;
+    PORTA = 0;
+    PORTB = 0;
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
+
+
+    ADCON0bits.ADCS0 = 1;
+    ADCON0bits.ADCS1 = 0;
+    ADCON0bits.CHS0 = 1;
+    ADCON0bits.CHS1 = 0;
+    ADCON0bits.CHS2 = 1;
+    ADCON0bits.CHS3 = 1;
+    ADCON0bits.ADON = 1;
+    ADCON1bits.ADFM = 0;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+
+
+    OPTION_REGbits.nRBPU = 1;
+    OPTION_REGbits.INTEDG = 0;
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.T0SE = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS = 0b000;
+    TMR0 = 2;
+
+
+    INTCONbits.GIE = 1;
+
+    INTCONbits.T0IE= 1;
+
+
+    INTCONbits.T0IF= 0;
+
+
+
+
+
+
+    PIE1bits.ADIE = 1;
+    PIR1bits.ADIF = 0;
+
+    INTCONbits.PEIE = 1;
+
+
+    INTCONbits.RBIF= 0;
+    INTCONbits.RBIE= 1;
+    IOCBbits.IOCB0 = 1;
+    IOCBbits.IOCB1 = 1;
+
+
+    i = 0;
+    z = 0;
+    RD2 = 0;
+    RD0 = 0;
+    RD1 = 0;
+    y=0;
+    x=0;
+    BANDERA = 0;
 }
+ void TOGGLE (void){
+        if(BANDERA==1){
+            BANDERA =0;
+            return;
+        }
+        else{
+            BANDERA = 1;
+            return;
+        }
+    }
 
+  void NIBBLES(void){
+        x = x & 0x0F;
+        y = ((y & 0xF0)>>4);
 
-void main(void)
-{
-    setup();
-    analogico();
-    return;
-}
+        return;
 
-    void analogico(void){
-        while(1){
+    }
+  void desplegar(void){
+       PORTC = 0;
+        RD0 = 0;
+        RD1 = 0;
+        if(BANDERA ==1){
+            PORTC = DISPLAY1[x];
+            RD0 = 1;
+            RD1=0;
 
+            return;
+        }
+        if(BANDERA == 0){
 
-            if (z>i){
-                RD2 = 1;
-            }
-            if (z<=i){
-                RD2 = 0;
-            }
-        _delay((unsigned long)((1)*(4000000/4000.0)));
-        if(ADCON0bits.GO_DONE == 0){
-            NIBBLES();
-            desplegar();
-            ADCON0bits.GO_DONE = 1;
+            PORTC = DISPLAY2[y];
+            RD1 = 1;
+            RD0 = 0;
+
+            return;
         }
 
 
+    }
+
+  void operacion (void){
+      if (RB0 == 1){
+           ANTIREBOTEA = 1;
+           (INTCONbits.GIE = 0);
+
+
+
+       }
+        if(RB0 == 0 && ANTIREBOTEA ==1 ){
+            ANTIREBOTEA = 0;
+
+            ADC++;
+
+            i = ADC;
+            (INTCONbits.GIE = 1);
+            return;
 
         }
 
+       if(RB1 == 1 ){
+            ANTIREBOTEB= 1;
+            (INTCONbits.GIE = 0);
+
+        }
+       if(RB1 == 0 && ANTIREBOTEB ==1){
+            ANTIREBOTEB= 0;
+            ADC--;
+
+            i = ADC;
+            (INTCONbits.GIE = 1);
+            return;
+
     }
+  }

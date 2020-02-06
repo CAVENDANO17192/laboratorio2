@@ -30,88 +30,30 @@
 
 #include <xc.h>
 #include <pic16f887.h>
-
-#define  ALARMA  RD2
-#define  seg1    RD0
-#define  seg2    RD1
-#define  SUMA    RB1
-#define  RESTA   RB0
-#define _XTAL_FREQ  4000000
+#include "LIBRERIA.h"
 
 
-void analogico(void);
-void desplegar(void);
-void NIBBLES(void);
-void TOGGLE(void);
-
-
-
-
-unsigned char DISPLAY1[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71};
-unsigned char DISPLAY2[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71};
-char BANDERA;
-unsigned char  z;
-unsigned char i;
-unsigned char x;
-unsigned char y;
-unsigned char ADC;
-unsigned char ANTIREBOTEA;
-unsigned char ANTIREBOTEB;
 
 void __interrupt() ISR(void){
        
-    if (TMR0IF == 1 ){
-        TOGGLE();
+    if (TMR0IF == 1 ){   // interrupcion del TIMER 0 que manda a colocar el valor del contador en el puerto A 
+        TOGGLE();       // y a multiplexar los displays 
         TMR0IF=0;
         TMR0= 2;
         PORTA = i;
         return;
     }
     if (INTCONbits.RBIF==1 ){
-        INTCONbits.RBIF = 0;
-        di();
+        INTCONbits.RBIF = 0;          // interrupcion del puerto B para sumar y restar en el contador binario.
+        di(); 
         
-        
-        if (RESTA == 1){
-           ANTIREBOTEA = 1;
-           di();
-           
-            
-    
-       }
-        if(RESTA == 0 && ANTIREBOTEA ==1 ){
-            ANTIREBOTEA = 0;
-            
-            ADC++;
-            
-            i = ADC;
-            ei();
-            return;
-                    
-            
-        }
-        
-        
+        operacion();
        
-       if(SUMA == 1 ){
-            ANTIREBOTEB= 1;
-            di();
-            
-        }
-       if(SUMA == 0 && ANTIREBOTEB ==1){
-            ANTIREBOTEB= 0;
-            ADC--;
-            
-            i = ADC;
-            ei();
-            return;
-              
-    }
         return;
     }
     if (PIR1bits.ADIF ==1){
         
-        PIR1bits.ADIF = 0;
+        PIR1bits.ADIF = 0;              // interrupcion del ADC que guarda en un registro el valor de la conversion analogica a digital.
         
         z = ADRESH;
         x=  ADRESH;
@@ -126,84 +68,8 @@ void __interrupt() ISR(void){
 
 void main(void)
 {
-   // oscilador interno
-    
-    OSCCONbits.IRCF = 0b111; //4Mhz
-    OSCCONbits.OSTS= 0;
-    OSCCONbits.HTS = 0;
-    OSCCONbits.LTS = 0;
-    OSCCONbits.SCS = 1;
-    
-    
-    
-    ANSEL = 0b00000000;
-    ANSELH = 0b00100000;
-    TRISA = 0b00000000;
-    TRISB = 0b00100011; 
-    
-    TRISC = 0b00000000;
-    TRISD = 0b00000000;
-    TRISE = 0;
-    PORTA = 0;
-    PORTB = 0;
-    PORTC = 0;
-    PORTD = 0;
-    PORTE = 0;
-    // adc
-    
-    ADCON0bits.ADCS0 = 1;
-    ADCON0bits.ADCS1 = 0;
-    ADCON0bits.CHS0 = 1;
-    ADCON0bits.CHS1 = 0;
-    ADCON0bits.CHS2 = 1;
-    ADCON0bits.CHS3 = 1;
-    ADCON0bits.ADON = 1;   // adc on
-    ADCON1bits.ADFM = 0;
-    ADCON1bits.VCFG0 = 0;
-    ADCON1bits.VCFG1 = 0;
-    
-    //timer 0
-    OPTION_REGbits.nRBPU = 1;
-    OPTION_REGbits.INTEDG = 0;
-    OPTION_REGbits.T0CS = 0;
-    OPTION_REGbits.T0SE = 0;
-    OPTION_REGbits.PSA = 0;
-    OPTION_REGbits.PS = 0b000; // 1:2 tmr0 rate 
-    TMR0 = 2;
-   
-    // interrupciones intcon
-    INTCONbits.GIE = 1;
-   
-    INTCONbits.T0IE= 1;
-    
-    
-    INTCONbits.T0IF= 0;
-    
-    
-    
-    
-    
-    // interrupciones ADC
-    PIE1bits.ADIE = 1;
-    PIR1bits.ADIF = 0;
-  
-    INTCONbits.PEIE = 1;
-    
-    // interrupciones on change PORTB
-    INTCONbits.RBIF= 0;
-    INTCONbits.RBIE= 1;
-    IOCBbits.IOCB0 = 1;
-    IOCBbits.IOCB1 = 1;
-    
-    i = 0;
-    z = 0;
-    ALARMA = 0;
-    seg1 = 0;
-    seg2 = 0;
-    y=0;
-    x=0;
-    BANDERA = 0;
-    analogico();
+    setup();                // el main  en donde llama la funcion setup para configurar puertos/entradas y modulos.
+    analogico();            // manda llamar a otra funcion para el desarrollo del codigo en el circuito
     return;
 }
     
@@ -211,74 +77,23 @@ void main(void)
         while(1){
             
             
-            if (z>i){
+            if (z>i){          // en un loop infinito estara constantemente revisando los valores del contador y del ADC para la alarma
                 ALARMA = 1;
             }
             if (z<=i){
                 ALARMA = 0;
             }
         __delay_ms(1);
-        if(ADCON0bits.GO_DONE == 0){
+        if(ADCON0bits.GO_DONE == 0){            // cuando go done se apague se prende de nuevo para iniciar nueva conversion ADC
             NIBBLES();
-            desplegar();
+            desplegar();                       // manda a llamar la funcion desplegar de los 7 segmentos
             ADCON0bits.GO_DONE = 1;   
         }
         
-        //  CONTADOR BINARIO 8 LEDS 
-       
-      
-        
-        
-        
-        
-        
-        
-        
        
        
         }
         
     }
     
-    void desplegar(void){
-       PORTC = 0;
-        seg1 = 0;
-        seg2 = 0;
-        if(BANDERA ==1){
-            PORTC = DISPLAY1[x];
-            seg1 = 1;
-            seg2=0;
-           
-            return;
-        }
-        if(BANDERA == 0){
-            
-            PORTC = DISPLAY2[y];
-            seg2 = 1;
-            seg1 = 0;
-    
-            return;
-        }
-        
-
-    }
-   
-    void NIBBLES(void){
-        x = x & 0x0F;
-        y = ((y & 0xF0)>>4);
-        
-        return;
-        
-    }
-   
-    void TOGGLE (void){
-        if(BANDERA==1){
-            BANDERA =0;
-            return;
-        }
-        else{
-            BANDERA = 1;
-            return;
-        }
-    }
-   
+ 
